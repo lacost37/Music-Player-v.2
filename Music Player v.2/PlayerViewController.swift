@@ -14,6 +14,8 @@ class PlayerViewController: UIViewController {
     public var songs: [Song] = []
     
     var player: AVAudioPlayer?
+    var timer: Timer?
+    var timeSong: Double = Double()
     
     
     // MARK: - user interface elements
@@ -45,8 +47,18 @@ class PlayerViewController: UIViewController {
         return label
     }()
     
+    private var labelTimeStart: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    private var labelTimeFinish: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
     let playPauseButton = UIButton()
-
+    let sliderDuration = UISlider()
     
     @IBOutlet var holder: UIView!
     
@@ -119,6 +131,20 @@ class PlayerViewController: UIViewController {
         holder.addSubview(albumNameLabel)
         holder.addSubview(artistNameLabel)
         
+        // time label
+        
+        labelTimeStart.frame = CGRect(x: 20,
+                                      y: holder.frame.size.height-80,
+                                      width: 80,
+                                      height: 25)
+        
+        labelTimeFinish.frame = CGRect(x: holder.frame.size.width-70,
+                                       y: holder.frame.size.height-80,
+                                       width: 80,
+                                       height: 25)
+        
+        holder.addSubview(labelTimeStart)
+        holder.addSubview(labelTimeFinish)
         // player controls
         
         let nextButton = UIButton()
@@ -164,14 +190,34 @@ class PlayerViewController: UIViewController {
         holder.addSubview(playPauseButton)
         holder.addSubview(nextButton)
         holder.addSubview(backButton)
-        // slider
+        
+        // slider volume
+        
         let slider = UISlider(frame: CGRect(x: 20,
-                                            y: holder.frame.size.height-60,
+                                            y: holder.frame.size.height-30,
                                             width: holder.frame.size.width-40,
                                             height: 50))
         slider.value = 0.5
         slider.addTarget(self, action: #selector(checkSliderVolume), for: .valueChanged)
         holder.addSubview(slider)
+        
+        // slider duration
+        
+        sliderDuration.frame = CGRect(x: 20,
+                                            y: holder.frame.size.height-60,
+                                            width: holder.frame.size.width-40,
+                                            height: 50)
+        sliderDuration.setThumbImage(UIImage(systemName: "circle.fill"), for: .normal)
+        sliderDuration.tintColor = .systemGreen
+        sliderDuration.minimumValue = 0.0
+        sliderDuration.maximumValue = Float((player?.duration)!)
+        holder.addSubview(sliderDuration)
+        
+        sliderDuration.addTarget(self, action: #selector(checkSliderDuration), for: .valueChanged)
+        
+        // make a timer interval for 1 second
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -240,5 +286,25 @@ class PlayerViewController: UIViewController {
         player?.volume = value
         // adjust player volume
         
+    }
+    
+    @objc func checkSliderDuration(_ slider: UISlider) {
+        player?.currentTime = TimeInterval(slider.value)
+    }
+    
+    @objc func updateTime() {
+        
+        let timePlayed = player?.currentTime
+            let minutes = Int(timePlayed! / 60)
+            let seconds = Int(timePlayed!.truncatingRemainder(dividingBy: 60) )
+            labelTimeStart.text = NSString(format: "%02d:%02d", minutes, seconds) as String
+        
+        timeSong = (player?.duration)!
+        let diffTime = (player?.currentTime)! - timeSong
+            let minutes1 = Int(diffTime / 60)
+            let seconds1 = Int(-diffTime.truncatingRemainder(dividingBy: 60))
+            labelTimeFinish.text = NSString(format: "%02d:%02d", minutes1, seconds1) as String
+        
+        sliderDuration.setValue(Float((player?.currentTime)!), animated: true)
     }
 }
