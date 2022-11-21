@@ -58,6 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+  
     
     func configureSongs() {
         songs.append(Song(name: "Devichnik",
@@ -75,6 +76,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                           artistName: "katrin",
                           imageName: "cover3",
                           trackName: "katrin"))
+        songs.append(Song(name: "Fire",
+                          albumName: "Safari",
+                          artistName: "Miyagi",
+                          imageName: "cover4",
+                          trackName: "miyagi"))
+        songs.append(Song(name: "Мокрые кроссы",
+                          albumName: "hehe",
+                          artistName: "Tima Belorusskih",
+                          imageName: "cover5",
+                          trackName: "tima"))
     }
 
 }

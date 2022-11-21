@@ -17,6 +17,8 @@
 		04163C90292A69AF00B67F38 /* slava.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04163C8B292A69AF00B67F38 /* slava.mp3 */; };
 		04163C91292A69AF00B67F38 /* katrin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04163C8C292A69AF00B67F38 /* katrin.mp3 */; };
 		04163C94292A766B00B67F38 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04163C93292A766B00B67F38 /* PlayerViewController.swift */; };
+		04163C96292BD8F000B67F38 /* miyagi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04163C95292BD8F000B67F38 /* miyagi.mp3 */; };
+		04163C98292BD8FC00B67F38 /* tima.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04163C97292BD8FC00B67F38 /* tima.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		04163C8B292A69AF00B67F38 /* slava.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = slava.mp3; sourceTree = "<group>"; };
 		04163C8C292A69AF00B67F38 /* katrin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katrin.mp3; sourceTree = "<group>"; };
 		04163C93292A766B00B67F38 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		04163C95292BD8F000B67F38 /* miyagi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = miyagi.mp3; path = ../../../../../songs/miyagi.mp3; sourceTree = "<group>"; };
+		04163C97292BD8FC00B67F38 /* tima.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tima.mp3; path = ../../../../../songs/tima.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 		04163C88292A69AF00B67F38 /* songs */ = {
 			isa = PBXGroup;
 			children = (
+				04163C97292BD8FC00B67F38 /* tima.mp3 */,
+				04163C95292BD8F000B67F38 /* miyagi.mp3 */,
 				04163C8A292A69AF00B67F38 /* gayazov.mp3 */,
 				04163C8B292A69AF00B67F38 /* slava.mp3 */,
 				04163C8C292A69AF00B67F38 /* katrin.mp3 */,
@@ -146,8 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				04163C91292A69AF00B67F38 /* katrin.mp3 in Resources */,
+				04163C98292BD8FC00B67F38 /* tima.mp3 in Resources */,
 				04163C81292A68C200B67F38 /* LaunchScreen.storyboard in Resources */,
 				04163C8F292A69AF00B67F38 /* gayazov.mp3 in Resources */,
+				04163C96292BD8F000B67F38 /* miyagi.mp3 in Resources */,
 				04163C7E292A68C200B67F38 /* Assets.xcassets in Resources */,
 				04163C90292A69AF00B67F38 /* slava.mp3 in Resources */,
 				04163C7C292A68C000B67F38 /* Main.storyboard in Resources */,
